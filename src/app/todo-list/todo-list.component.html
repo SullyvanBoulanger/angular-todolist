@@ -1,0 +1,7 @@
+<ul>
+  @for (task of tasks; track $index) {
+  <li>
+    <digi-todo-item [task]="task" [id]="$index" />
+  </li>
+  }
+</ul>
