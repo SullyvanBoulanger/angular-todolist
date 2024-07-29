@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../todo.service';
-import { TodoItemComponent } from "../todo-item/todo-item.component";
+import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'digi-todo-list',
   standalone: true,
-  imports: [TodoItemComponent],
+  imports: [TodoItemComponent, AsyncPipe],
   templateUrl: './todo-list.component.html',
-  styleUrl: './todo-list.component.css'
+  styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  tasks: string[] = [];
+  tasks: Observable<string[]>;
 
-  constructor(private todoService : TodoService){}
-
-  ngOnInit(): void {
-    this.todoService.subjectTasks.subscribe((value) => this.tasks = value);
+  constructor(private todoService: TodoService) {
+    this.tasks = this.todoService.getTasks();
   }
 }

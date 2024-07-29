@@ -5,18 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TodoService {
-  subjectTasks = new BehaviorSubject<string[]>([]);
-  #tasks: string[] = [];
+  private subjectTasks = new BehaviorSubject<string[]>([]);
+  private tasks: string[] = [];
 
   constructor() {}
 
+  getTasks(): Observable<string[]> {
+    return this.subjectTasks.asObservable();
+  }
+
   addTask(task: string): void {
-    this.#tasks.push(task);
-    this.subjectTasks.next(this.#tasks);
+    this.tasks.push(task);
+    this.subjectTasks.next(this.tasks);
   }
 
   deleteTask(id: number): void {
-    this.#tasks = this.#tasks.filter((_task, taskId) => taskId != id);
-    this.subjectTasks.next(this.#tasks);
+    this.tasks = this.tasks.filter((_task, taskId) => taskId != id);
+    this.subjectTasks.next(this.tasks);
   }
 }
