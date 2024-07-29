@@ -11,9 +11,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddTodoComponent {
   newTask = '';
+  priority = '';
+
   constructor(private todoService: TodoService) {}
 
   addTask(): void {
-    this.todoService.addTask(this.newTask);
+    this.todoService.addTask(this.newTask, this.priority);
   }
 }

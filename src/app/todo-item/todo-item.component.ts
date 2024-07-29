@@ -1,20 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoService } from '../todo.service';
+import { Task } from '../task.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'digi-todo-item',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.css',
 })
 export class TodoItemComponent {
-  @Input() task = '';
-  @Input() id = -1;
+  @Input() task: Task = {
+    id: -1,
+    name: '',
+    done: false,
+    priority: '',
+  };
+  @Output() toogleCompletion = new EventEmitter<number>();
+  @Output() remove = new EventEmitter<number>();
 
-  constructor(private todoService: TodoService) {}
+  onToggleCompletion() {
+    this.toogleCompletion.emit(this.task.id)
+  }
 
-  deleteTask(): void {
-    this.todoService.deleteTask(this.id);
+  onRemove() {
+    this.remove.emit(this.task.id);
   }
 }

@@ -1,7 +1,11 @@
-<ul>
-  @for (task of tasks | async; track $index) {
-  <li>
-    <digi-todo-item [task]="task" [id]="$index" />
-  </li>
-  }
-</ul>
+<!-- <ul> -->
+@for (task of tasks | async; track $index) {
+<li>
+  <digi-todo-item
+    [task]="task"
+    (remove)="onDelete($event)"
+    (toogleCompletion)="onToggleTaskCompletion($event)"
+  />
+</li>
+}
+<!-- </ul> -->

@@ -1,2 +1,10 @@
-{{ task }}
-<button (click)="deleteTask()">Delete</button>
+<div>
+  <input
+    type="checkbox"
+    [checked]="task.done"
+    (change)="onToggleCompletion()"
+  />
+  <span [class.done]="task.done">{{ task.name }} </span>
+  <span class="priority" [ngClass]="task.priority">{{ task.priority }} </span>
+  <button (click)="onRemove()">Delete</button>
+</div>
