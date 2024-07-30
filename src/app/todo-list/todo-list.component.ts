@@ -13,10 +13,19 @@ import { Task } from '../task.model';
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  tasks: Observable<Task[]>;
+  tasks$: Observable<Task[]>;
+  filterActive = true;
+  filterDone = true;
 
   constructor(private todoService: TodoService) {
-    this.tasks = this.todoService.getTasks();
+    this.tasks$ = this.todoService.getTasks();
+  }
+
+  hideTask(task: Task): boolean {
+    return !(
+      (this.filterActive == true && task.done == false) ||
+      (this.filterDone == true && task.done == true)
+    );
   }
 
   onToggleTaskCompletion(id: number) {
@@ -25,5 +34,13 @@ export class TodoListComponent {
 
   onDelete(id: number) {
     this.todoService.deleteTask(id);
+  }
+
+  onToggleFilterActive() {
+    this.filterActive = !this.filterActive;
+  }
+
+  onToggleFilterDone() {
+    this.filterDone = !this.filterDone;
   }
 }

@@ -29,10 +29,10 @@ export class TodoService {
   }
 
   toggleTask(id: number) {
-    const index = this.tasks.indexOf(
-      this.tasks.filter((task) => task.id === id)[0]
+    this.tasks = this.tasks.map((task) =>
+      task.id === id ? { ...task, done: !task.done } : task
     );
-    this.tasks[index].done = !this.tasks[index].done;
+    this.subjectTasks.next(this.tasks);
   }
 
   deleteTask(id: number): void {

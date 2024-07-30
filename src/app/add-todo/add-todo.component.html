@@ -1,11 +1,38 @@
 <div>
   <form (submit)="addTask()">
-    <label for="newTask">Tâche à ajouter : </label>
-    <input type="text" [(ngModel)]="newTask" name="newTask" id="newTask" />
-    <br />
-    <label for="priority">Priorité : </label>
-    <input type="text" [(ngModel)]="priority" name="priority" id="priority" />
-    <br />
-    <button type="submit">Ajouter</button>
+    <div class="mb-5">
+      <label
+        for="newTask"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Tâche à ajouter :
+      </label>
+      <input
+        type="text"
+        [(ngModel)]="newTask"
+        name="newTask"
+        id="newTask"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <div class="mb-5">
+      <label
+        for="priority"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Priorité :
+      </label>
+      <input
+        type="text"
+        [(ngModel)]="priority"
+        name="priority"
+        id="priority"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      type="submit"
+    >
+      Ajouter
+    </button>
   </form>
 </div>

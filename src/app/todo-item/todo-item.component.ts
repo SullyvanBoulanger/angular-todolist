@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Task } from '../task.model';
 import { CommonModule } from '@angular/common';
+import { PriorityPipe } from '../priority.pipe';
 
 @Component({
   selector: 'digi-todo-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PriorityPipe],
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.css',
 })

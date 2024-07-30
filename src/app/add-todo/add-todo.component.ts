@@ -17,5 +17,8 @@ export class AddTodoComponent {
 
   addTask(): void {
     this.todoService.addTask(this.newTask, this.priority);
+
+    this.newTask = '';
+    this.priority = '';
   }
 }
