@@ -13,13 +13,13 @@ import { PriorityPipe } from '../priority.pipe';
 })
 export class TodoItemComponent {
   @Input() task: Task = {
-    id: -1,
+    id: '',
     name: '',
     done: false,
     priority: '',
   };
-  @Output() toogleCompletion = new EventEmitter<number>();
-  @Output() remove = new EventEmitter<number>();
+  @Output() toogleCompletion = new EventEmitter<string>();
+  @Output() remove = new EventEmitter<string>();
 
   onToggleCompletion() {
     this.toogleCompletion.emit(this.task.id)

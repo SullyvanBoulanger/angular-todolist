@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { Task } from '../task.model';
 
@@ -13,11 +13,13 @@ import { Task } from '../task.model';
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  tasks$: Observable<Task[]>;
+  tasks$: Observable<Task[]> = new Observable();
   filterActive = true;
   filterDone = true;
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService) {}
+
+  ngOnInit() {
     this.tasks$ = this.todoService.getTasks();
   }
 
@@ -28,11 +30,11 @@ export class TodoListComponent {
     );
   }
 
-  onToggleTaskCompletion(id: number) {
+  onToggleTaskCompletion(id: string) {
     this.todoService.toggleTask(id);
   }
 
-  onDelete(id: number) {
+  onDelete(id: string) {
     this.todoService.deleteTask(id);
   }
 

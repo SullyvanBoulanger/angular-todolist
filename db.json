@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Version 0.4 de Project Divinity",
+      "done": false,
+      "priority": "Haute"
+    },
+    {
+      "id": "2",
+      "name": "Imprimer les cartes",
+      "done": false,
+      "priority": "Haute"
+    },
+    {
+      "id": "3",
+      "name": "Faire des démos de Project Divinity",
+      "done": true,
+      "priority": "Moyenne"
+    }
+  ]
+}
